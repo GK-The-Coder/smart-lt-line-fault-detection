@@ -96,7 +96,12 @@ export default function Dashboard() {
 
       {/* 🔊 Audio Element */}
       <audio ref={audioRef} src="/fahhh.mp3" preload="auto" />
-
+      {/* Footer */}
+      <footer className="mt-12 pt-6 border-t border-gray-700 text-center text-gray-400">
+        <p>
+          Built with ⚡ by <span className="text-green-400 font-semibold">Gk-The-Coder</span>
+        </p>
+      </footer>
     </div>
   );
 }
