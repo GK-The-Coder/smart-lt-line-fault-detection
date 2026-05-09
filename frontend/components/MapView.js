@@ -1,3 +1,4 @@
+"use client";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -41,7 +42,7 @@ export default function MapView({ poles }) {
       >
         <TileLayer
           attribution="&copy; OpenStreetMap"
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
         <FitBounds poles={poles} />
@@ -55,7 +56,10 @@ export default function MapView({ poles }) {
           return (
             <Marker
               key={pole._id || pole.poleId}
-              position={[pole.latitude, pole.longitude]}
+              position={[
+                Number(pole.latitude),
+                Number(pole.longitude),
+]}
               icon={icon}
             >
               <Popup>

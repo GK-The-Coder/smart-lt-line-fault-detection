@@ -1,30 +1,67 @@
+"use client";
 export default function PoleCard({ pole }) {
-
-  const statusStyle =
-    pole.status === "fault"
-      ? "border-red-500 shadow-red-500/40"
-      : pole.theftDetected
-      ? "border-yellow-400 shadow-yellow-400/40"
-      : "border-green-500 shadow-green-500/40";
+  const isFault = pole.status === "fault";
 
   return (
-    <div className={`bg-[#1e293b] p-6 rounded-2xl border-l-4 ${statusStyle} shadow-lg`}>
-      <h3 className="text-xl font-semibold">{pole.poleId}</h3>
+    <div
+      className={`rounded-md border px-3 py-3 text-sm leading-snug shadow-sm ${
+        isFault
+          ? "bg-[#f8dede] border-[#e2b1b1]"
+          : "bg-[#dff1df] border-[#aed0ae]"
+      }`}
+    >
+      <h3
+        className={`font-extrabold text-lg mb-2 ${
+          isFault
+            ? "text-[#c05656]"
+            : "text-[#2f7d46]"
+        }`}
+      >
+        {pole.poleId}
+      </h3>
 
-      <div className="mt-3 text-gray-300 space-y-1">
-        <p>Status: <span className="font-semibold">{pole.status}</span></p>
-        <p>Voltage: {pole.voltage?.toFixed(2)} V</p>
-        <p>Current: {pole.current?.toFixed(2)} A</p>
-        <p className="text-sm text-gray-400">
-          {new Date(pole.timestamp).toLocaleTimeString()}
-        </p>
-      </div>
+      <p className="text-[#5f5348] font-semibold">
+        Status:
+        <span className="font-bold ml-1">
+          {pole.status}
+        </span>
+      </p>
 
-      {pole.status === "fault" && (
-        <div className="mt-3 text-red-400 animate-pulse font-semibold">
-          🚨 Fault Detected
-        </div>
-      )}
+      <p className="text-[#5f5348] font-semibold">
+        Voltage:
+        <span className="font-bold ml-1">
+          {Number(pole.voltage).toFixed(1)} V
+        </span>
+      </p>
+
+      <p className="text-[#5f5348] font-semibold">
+        Current:
+        <span className="font-bold ml-1">
+          {Number(pole.current).toFixed(1)} A
+        </span>
+      </p>
+
+      <p className="text-[#5f5348] font-semibold">
+        Voltage Out:
+        <span className="font-bold ml-1">
+          {pole.voltageOut || 220} V
+        </span>
+      </p>
+
+      <p className="text-[#5f5348] font-semibold">
+        Current Out:
+        <span className="font-bold ml-1">
+          {pole.currentOut || 10} A
+        </span>
+      </p>
+
+      <p className="text-[#5f5348] font-semibold">
+        Time:
+        <span className="font-bold ml-1">
+          {new Date().toLocaleTimeString()}
+        </span>
+      </p>
     </div>
   );
 }
+
