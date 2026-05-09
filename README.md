@@ -11,7 +11,7 @@ The system continuously monitors voltage and current data from LT poles, detects
 Access the deployed dashboard here:
 
 **Live Demo:**
-https://smart-lt-line-fault-detection.vercel.app/dashboard
+https://smart-lt-line-fault-detection.vercel.app/
 
 ---
 
