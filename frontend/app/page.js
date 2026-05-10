@@ -21,7 +21,7 @@ export default function Dashboard() {
   useEffect(() => {
     const interval = setInterval(() => {
       axios
-        .get("http://localhost:5000/api/data/history")
+        .get("https://smart-lt-line-fault-detection.onrender.com/api/data/history")
         .then((res) => setData(res.data))
         .catch((err) => console.log(err));
     }, 3000);
